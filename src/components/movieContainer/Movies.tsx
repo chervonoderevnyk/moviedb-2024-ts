@@ -1,23 +1,35 @@
-import {useAppSelector} from "../../hooks/reduxHooks";
 import {useEffect} from "react";
+
+import {useAppSelector} from "../../hooks/reduxHooks";
 import {movieActions} from "../../redux/slices/MovieSlice";
 import {Movie} from "./Movie";
 import { useAppDispatch} from "../../hooks/reduxHooks";
+import css from "./Movie.module.css"
+import {useSearchParams} from "react-router-dom";
+import {Pagination} from "../Pagination";
 
 const Movies = () => {
 
-    const {movies} = useAppSelector(state => state.movies);
-
+    const [query] = useSearchParams();
+    const {movies, totalPages} = useAppSelector(state => state.movies);
     const dispatch = useAppDispatch();
 
+    const currentPage = query.get('page') || '1';
+
     useEffect(() => {
-        dispatch(movieActions.getAllMovies2())
-    }, [dispatch]);
+        dispatch(movieActions.getAllMovies2(currentPage))
+    }, [dispatch, currentPage]);
 
     return (
         <div>
-            {movies.map(movie=> <Movie key={movie.id} movie={movie} />)}
+            <div className={css.moviesContainer}>
+                {movies.map(movie=> <Movie key={movie.id} movie={movie} />)}
+            </div>
+            <div className={css.paginationButton}>
+                <Pagination totalPages={totalPages}/>
+            </div>
         </div>
+
     );
 };
 

@@ -1,8 +1,10 @@
-import {Header} from "../components/header/Header";
 import {Outlet} from "react-router-dom";
-import {useAppDispatch} from "../hooks/reduxHooks";
 import {useEffect} from "react";
+
+import {Header} from "../components/header/Header";
+import {useAppDispatch} from "../hooks/reduxHooks";
 import {meActions} from "../redux/slices/MeSlice";
+import css from "./MainLayout.module.css"
 
 const MainLayout = () => {
 
@@ -13,7 +15,7 @@ const MainLayout = () => {
     }, [dispatch]);
 
     return (
-        <div>
+        <div className={css.mainContainer}>
             <Header/>
             <Outlet/>
         </div>

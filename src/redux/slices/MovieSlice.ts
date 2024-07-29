@@ -4,18 +4,20 @@ import {IPagination} from "../../interfaces/moviesInterfaceContainer/IPagination
 import {movieService} from "../../services/MovieService";
 
 interface IState{
-    movies: IMovie[]
+    movies: IMovie[],
+    totalPages: number
 }
 
 let initialState:IState={
-    movies:[]
+    movies:[],
+    totalPages: 0
 };
 
-const getAllMovies2 = createAsyncThunk<IPagination<IMovie>, void>(
+const getAllMovies2 = createAsyncThunk<IPagination<IMovie>, string>(
     'movieSlice/getAllMovies2',
-    async (_, {rejectWithValue})=> {
+    async (page, {rejectWithValue})=> {
         try {
-            const {data} = await movieService.getAllMovies1()
+            const {data} = await movieService.getAllMovies1(page)
             return data
         }catch (e) {
             return rejectWithValue(e)
@@ -30,7 +32,8 @@ let movieSlice = createSlice({
     extraReducers: builder =>
         builder
             .addCase(getAllMovies2.fulfilled, (state, action) =>{
-                state.movies = action.payload.results
+                state.movies = action.payload.results;
+                state.totalPages = action.payload.total_pages  // Зберігаємо загальну кількість сторінок
             })
 });
 

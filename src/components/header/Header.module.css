@@ -1,44 +1,3 @@
-/*.Header {*/
-/*    display: flex;*/
-/*    justify-content: center; !* Центрує елементи по горизонталі *!*/
-/*    align-items: center; !* Центрує елементи по вертикалі *!*/
-/*    padding: 10px; !* Відступи всередині заголовка *!*/
-/*    background-color: cadetblue;*/
-/*    height: auto; !* Висота по контенту *!*/
-/*}*/
-
-/*.titleContainer {*/
-
-/*}*/
-
-/*.linkContainer {*/
-/*    display: flex;*/
-/*    flex-direction: column; !* Робить контейнер вертикальним *!*/
-/*    gap: 10px; !* Відстань між посиланнями *!*/
-/*    align-items: center; !* Центрує посилання по горизонталі *!*/
-/*    margin: 0 auto; !* Центрує контейнер по горизонталі *!*/
-/*}*/
-
-/*.userContainer {*/
-/*    width: 150px;*/
-/*    display: flex;*/
-/*    align-items: center; !* Центрує елемент по вертикалі *!*/
-/*}*/
-
-/*.genresContainer {*/
-/*    display: flex;*/
-/*    gap: 10px; !* Відстань між жанрами *!*/
-/*    flex-wrap: wrap; !* Дозволяє переносити жанри на новий рядок при переповненні *!*/
-/*}*/
-
-/*.genreLink {*/
-/*    text-decoration: none; !* Без підкреслення *!*/
-/*    color: white; !* Білий текст *!*/
-/*    padding: 5px 10px; !* Відступи всередині *!*/
-/*    border-radius: 5px; !* Закруглені кути *!*/
-/*    background-color: #004d40; !* Колір фону для жанрів *!*/
-/*}*/
-
 .Header {
     display: flex;
     flex-direction: column; /* Розміщує елементи вертикально */
@@ -46,6 +5,7 @@
     padding: 10px; /* Відступи всередині заголовка */
     background-color: cadetblue;
     height: auto; /* Висота по контенту */
+    margin-bottom: 6px;
 }
 
 .titleContainer {

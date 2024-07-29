@@ -1,8 +1,6 @@
 import {createBrowserRouter, Navigate} from "react-router-dom";
 import {MainLayout} from "./lauoyts/MainLayout";
 import {MoviesPage} from "./pages/MoviesPage";
-import {GenresPage} from "./pages/GenresPage";
-// import {MePage} from "./pages/MePage";
 
 const router = createBrowserRouter([
     {path: '', element: <MainLayout/>, children:[
