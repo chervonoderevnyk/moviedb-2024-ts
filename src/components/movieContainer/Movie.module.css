@@ -19,12 +19,17 @@
     justify-content: space-between;
     background-color: silver;
     border-radius: 11px;
+    background-size: cover; /* Забезпечує покриття всього контейнера */
+    background-position: center; /* Центрує зображення */
 }
 
 .movieContainer div {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    z-index: 1; /* Піднімає текст над фоном */
+    background-color: rgba(255, 255, 255, 0.8); /* Напівпрозорий білий фон для тексту */
+    padding: 5px; /* Додає внутрішні відступи до тексту */
 }
 
 .movieContainer img {

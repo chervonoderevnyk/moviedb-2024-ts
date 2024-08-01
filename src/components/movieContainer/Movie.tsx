@@ -25,14 +25,15 @@ const Movie: FC<IProps> = ({ movie }) => {
     const imageUrl = images[id]?.[0]?.file_path; // Використовуємо перше зображення
 
     return (
-        <div className={css.movieContainer}>
-            <div>title: {title}</div>
-            <div>popularity: {popularity}</div>
-            {imageUrl ? (
-                <img src={`https://image.tmdb.org/t/p/w500${imageUrl}`} alt={title} />
-            ) : (
-                <div>Loading image...</div>
-            )}
+        <div
+            className={css.movieContainer}
+            style={{
+                backgroundImage:
+                    imageUrl ? `url(https://image.tmdb.org/t/p/w500${imageUrl})` : 'none'
+            }}
+        >
+            {/*<div>{title}</div>*/}
+            <div>{popularity}</div>
         </div>
     );
 };

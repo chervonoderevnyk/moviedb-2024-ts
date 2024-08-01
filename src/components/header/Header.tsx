@@ -1,52 +1,64 @@
-import {useEffect} from "react";
-
-import {Link, useLocation} from "react-router-dom";
+import { useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import css from "./Header.module.css";
-import {useAppDispatch, useAppSelector} from "../../hooks/reduxHooks";
-import {genreActions} from "../../redux/slices/genresSlicesContainer/GenreSlice";
+import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
+import { genreActions } from "../../redux/slices/genresSlicesContainer/GenreSlice";
+import { toggleDarkMode } from "../../redux/slices/ModeSlice";
 
 const Header = () => {
     const dispatch = useAppDispatch();
-    const {me} = useAppSelector(state => state.me);
-    const {genres} = useAppSelector(state => state.genres);
+    const { me } = useAppSelector(state => state.me);
+    const { genres } = useAppSelector(state => state.genres);
+    const isDarkMode = useAppSelector(state => state.darkMode.isDarkMode);
     const location = useLocation();
 
     useEffect(() => {
         dispatch(genreActions.getAllGenres2());
     }, [dispatch]);
 
-    // Отримати поточний list_id з URL та перетворити на число
     const currentGenreId = Number(location.pathname.split('/')[2]);
 
+    useEffect(() => {
+        document.body.className = isDarkMode ? css.darkMode : css.lightMode;
+    }, [isDarkMode]);
+
     return (
-        <div className={css.Header}>
+        <div className={`${css.Header} ${isDarkMode ? css.darkModeHeader : ''}`}>
             <div className={css.titleContainer}>
                 <div className={css.linkContainer}>
-                    <Link to={'/movies'}>SUPER-PUPER MOVIES</Link>
+                    <Link to={'/movies'} className={isDarkMode ? css.darkModeLink : ''}>
+                        SUPER-PUPER MOVIES
+                    </Link>
                 </div>
                 <div className={css.userContainer}>
-                    {me ?
-                        <span>{me.username}</span> :
-                        <Link to={'/me'}>me</Link>}
+                    <button
+                        className={css.darkLightModeButton}
+                        onClick={() => dispatch(toggleDarkMode())}
+                    >
+                        {isDarkMode ? 'light' : 'dark'}
+                    </button>
+
+                    {me ? (
+                        <span className={css.userNameContainer}>{me.username}</span>
+                    ) : (
+                        <Link to={'/me'}>me</Link>
+                    )}
                 </div>
             </div>
 
             <div className={css.genresContainer}>
                 {genres.map(genre => (
-
                     <Link
                         key={genre.id}
                         to={`/list/${genre.id}`}
-                        className={
-                        `${css.genreLink} ${currentGenreId == genre.id ? css.activeGenreLink : ''}`}
+                        className={`${css.genreLink} ${isDarkMode ? css.darkModeGenreLink : ''} ${currentGenreId === genre.id ? css.activeGenreLink : ''}`}
                     >
                         {genre.name}
                     </Link>
                 ))}
             </div>
-
         </div>
     );
 };
 
-export {Header};
+export { Header };

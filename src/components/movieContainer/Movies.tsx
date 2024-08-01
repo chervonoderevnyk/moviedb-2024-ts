@@ -11,7 +11,7 @@ import {Pagination} from "../Pagination";
 const Movies = () => {
 
     const [query] = useSearchParams();
-    const {movies, totalPages, imageMovie} =
+    const {movies, totalPages} =
         useAppSelector(state => state.movies);
 
     const dispatch = useAppDispatch();
@@ -25,7 +25,8 @@ const Movies = () => {
     return (
         <div>
             <div className={css.moviesContainer}>
-                {movies.map(movie=> <Movie key={movie.id} movie={movie} />)}
+                {movies.map(movie=>
+                    <Movie key={movie.id} movie={movie} />)}
             </div>
             <div className={css.paginationButton}>
                 <Pagination totalPages={totalPages}/>

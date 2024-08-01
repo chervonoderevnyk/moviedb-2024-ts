@@ -1,52 +1,92 @@
 .Header {
     display: flex;
-    flex-direction: column; /* Розміщує елементи вертикально */
-    align-items: center; /* Центрує елементи по горизонталі */
-    padding: 10px; /* Відступи всередині заголовка */
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
     background-color: cadetblue;
-    height: auto; /* Висота по контенту */
+    height: auto;
     margin-bottom: 6px;
+}
+
+.darkModeHeader {
+    background-color: #37474f; /* Темніший фон */
 }
 
 .titleContainer {
     display: flex;
     flex-direction: row;
-    align-items: center; /* Центрує елементи по горизонталі */
-    width: 100%; /* Забезпечує, що контейнер заповнює доступний простір по ширині */
+    align-items: center;
+    width: 100%;
+    padding: 0 10px;
+    box-sizing: border-box;
 }
 
 .linkContainer {
     display: flex;
-    flex-direction: column; /* Робить контейнер вертикальним */
-    gap: 10px; /* Відстань між посиланнями */
-    align-items: center; /* Центрує посилання по горизонталі */
-    margin: 0 auto; /* Центрує контейнер по горизонталі */
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    font-size: 20px;
+    flex: 1;
+}
+
+.darkModeLink {
+    color: #ffeb3b; /* Світло-жовтий */
 }
 
 .userContainer {
-    width: 150px;
     display: flex;
-    align-items: center; /* Центрує елемент по вертикалі */
+    align-items: center;
+    justify-content: flex-end;
+    width: fit-content;
+}
+
+.userNameContainer {
+    border: 1px solid #000;
+    border-radius: 10px;
+    padding: 3px 5px;
 }
 
 .genresContainer {
     display: flex;
-    gap: 10px; /* Відстань між жанрами */
-    flex-wrap: wrap; /* Дозволяє переносити жанри на новий рядок при переповненні */
-    margin-top: 10px; /* Відстань між titleContainer та genresContainer */
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+    justify-content: center;
 }
 
 .genreLink {
-    text-decoration: none; /* Без підкреслення */
-    color: white; /* Білий текст */
-    padding: 5px 10px; /* Відступи всередині */
-    border-radius: 5px; /* Закруглені кути */
-    background-color: #004d40; /* Колір фону для жанрів */
+    text-decoration: none;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: #004d40;
+    white-space: nowrap;
+}
+
+.darkModeGenreLink {
+    background-color: #00695c; /* Світліший фон у темному режимі */
 }
 
 .activeGenreLink {
-    background-color: #ff9800; /* Колір фону для активного жанру */
-    font-size: 1.2em; /* Збільшений розмір тексту */
-    font-weight: bold; /* Жирний текст */
+    background-color: #ff9800;
+    font-size: 1.2em;
+    font-weight: bold;
 }
 
+.darkLightModeButton {
+    margin-right: 11px;
+    border-radius: 6px;
+    background-color: black;
+    color: snow;
+}
+
+.darkMode {
+    background-color: #121212;
+    /*color: #e0e0e0;*/
+}
+
+.lightMode {
+    background-color: #ffffff;
+    color: #000000;
+}

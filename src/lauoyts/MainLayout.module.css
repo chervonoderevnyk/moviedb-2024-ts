@@ -1,5 +1,8 @@
 .mainContainer {
     padding: 3px;
     background-color: lightblue;
+}
 
+.darkModeMainContainer {
+    background-color: #000000; /* Чорний фон */
 }
