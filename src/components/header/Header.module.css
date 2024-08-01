@@ -44,3 +44,9 @@
     background-color: #004d40; /* Колір фону для жанрів */
 }
 
+.activeGenreLink {
+    background-color: #ff9800; /* Колір фону для активного жанру */
+    font-size: 1.2em; /* Збільшений розмір тексту */
+    font-weight: bold; /* Жирний текст */
+}
+

@@ -1,25 +1,40 @@
-import {FC, PropsWithChildren} from "react";
+import { FC, PropsWithChildren, useEffect } from "react";
 
-import {IMovie} from "../../interfaces/moviesInterfaceContainer/IMovie";
-import css from "./Movie.module.css"
+import { IMovie } from "../../interfaces/moviesInterfaceContainer/IMovie";
+import css from "./Movie.module.css";
+import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
+import { movieActions } from "../../redux/slices/moviesSlicesContainer/MovieSlice";
 
-interface IProps extends PropsWithChildren{
-    movie: IMovie
+interface IProps extends PropsWithChildren {
+    movie: IMovie;
 }
 
-const Movie:FC<IProps> = ({movie}) => {
-    const {id,genre_ids,original_title,title,popularity, poster_path } = movie;
+const Movie: FC<IProps> = ({ movie }) => {
+    const { id, title, popularity } = movie;
+    const dispatch = useAppDispatch();
+
+    const { images } =
+        useAppSelector(state => state.movies);
+
+    useEffect(() => {
+        if (!images[id]) {
+            dispatch(movieActions.getImageByMovie(String(id)));
+        }
+    }, [dispatch, id, images]);
+
+    const imageUrl = images[id]?.[0]?.file_path; // Використовуємо перше зображення
 
     return (
         <div className={css.movieContainer}>
-            <div>id: {id}</div>
-            <div>genre_ids: {genre_ids}</div>
-            <div>original_title: {original_title}</div>
             <div>title: {title}</div>
             <div>popularity: {popularity}</div>
-            <div>poster_path: {poster_path}</div>
+            {imageUrl ? (
+                <img src={`https://image.tmdb.org/t/p/w500${imageUrl}`} alt={title} />
+            ) : (
+                <div>Loading image...</div>
+            )}
         </div>
     );
 };
 
-export {Movie};
+export { Movie };

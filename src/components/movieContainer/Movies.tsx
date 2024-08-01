@@ -1,7 +1,7 @@
 import {useEffect} from "react";
 
 import {useAppSelector} from "../../hooks/reduxHooks";
-import {movieActions} from "../../redux/slices/MovieSlice";
+import {movieActions} from "../../redux/slices/moviesSlicesContainer/MovieSlice";
 import {Movie} from "./Movie";
 import { useAppDispatch} from "../../hooks/reduxHooks";
 import css from "./Movie.module.css"
@@ -11,7 +11,9 @@ import {Pagination} from "../Pagination";
 const Movies = () => {
 
     const [query] = useSearchParams();
-    const {movies, totalPages} = useAppSelector(state => state.movies);
+    const {movies, totalPages, imageMovie} =
+        useAppSelector(state => state.movies);
+
     const dispatch = useAppDispatch();
 
     const currentPage = query.get('page') || '1';

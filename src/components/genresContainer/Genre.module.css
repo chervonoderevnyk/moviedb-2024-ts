@@ -1,0 +1,30 @@
+.genresContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px; /* Проміжок між контейнерами фільмів */
+    margin: 1px;
+}
+
+.genreContainer {
+    width: 200px;
+    height: 300px;
+    border: 1px solid #000;
+    overflow: hidden;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: silver;
+    border-radius: 11px;
+}
+
+.genreContainer div {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+

@@ -1,7 +1,8 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {IGenresList} from "../../interfaces/genresInterfaceContainer/IGenresList";
-import {IGenre} from "../../interfaces/genresInterfaceContainer/IGenre";
-import {genreService} from "../../services/GenreService";
+
+import {IGenres} from "../../../interfaces/genresInterfaceContainer/IGenres";
+import {IGenre} from "../../../interfaces/genresInterfaceContainer/IGenre";
+import {genreService} from "../../../services/GenreService";
 
 interface IState{
     genres: IGenre[]
@@ -11,7 +12,7 @@ let initialState: IState= {
     genres:[]
 }
 
-const getAllGenres2 = createAsyncThunk<IGenresList<IGenre>, void>(
+const getAllGenres2 = createAsyncThunk<IGenres<IGenre>, void>(
     'genreSlice/getAllGenres2',
     async (_, {rejectWithValue}) => {
         try {

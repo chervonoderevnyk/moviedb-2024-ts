@@ -7,5 +7,11 @@ export interface IUrls {
     };
     me: {
         base: string
+    };
+    list: {
+        base: string;
+    };
+    image: {
+        base: string
     }
 }
