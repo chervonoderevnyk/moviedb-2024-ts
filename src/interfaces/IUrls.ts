@@ -13,5 +13,8 @@ export interface IUrls {
     };
     image: {
         base: string
+    };
+    movieDetails: {
+        base: string
     }
 }

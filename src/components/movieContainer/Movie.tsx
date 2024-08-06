@@ -1,21 +1,21 @@
 import { FC, PropsWithChildren, useEffect } from "react";
-
+import { useNavigate } from "react-router-dom"; // Додати useNavigate
 import { IMovie } from "../../interfaces/moviesInterfaceContainer/IMovie";
 import css from "./Movie.module.css";
 import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
 import { movieActions } from "../../redux/slices/moviesSlicesContainer/MovieSlice";
-import { StarRating } from "../rating/StarRating";
+import { StarRating } from "../ratingContainer/StarRating";
 
 interface IProps extends PropsWithChildren {
     movie: IMovie;
 }
 
 const Movie: FC<IProps> = ({ movie }) => {
-    const { id, popularity} = movie;
+    const { id, popularity } = movie;
     const dispatch = useAppDispatch();
+    const navigate = useNavigate(); // Ініціалізація useNavigate
 
-    const { images } =
-        useAppSelector(state => state.movies);
+    const { images } = useAppSelector(state => state.movies);
 
     useEffect(() => {
         if (!images[id]) {
@@ -23,7 +23,12 @@ const Movie: FC<IProps> = ({ movie }) => {
         }
     }, [dispatch, id, images]);
 
-    const imageUrl = images[id]?.[0]?.file_path; // Використовуємо перше зображення
+    const imageUrl = images[id]?.[0]?.file_path;
+
+    // Функція для обробки кліку по фільму
+    const handleClick = () => {
+        navigate(`/movie/${id}`);
+    };
 
     return (
         <div
@@ -32,9 +37,9 @@ const Movie: FC<IProps> = ({ movie }) => {
                 backgroundImage:
                     imageUrl ? `url(https://image.tmdb.org/t/p/w500${imageUrl})` : 'none'
             }}
+            onClick={handleClick} // Додати обробник кліку
         >
-            {/*<div>{popularity}</div>*/}
-            <StarRating rating={popularity} />
+            <StarRating rating={popularity}/>
         </div>
     );
 };

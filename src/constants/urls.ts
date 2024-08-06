@@ -18,6 +18,7 @@ const genres = '/genre/movie/list'
 const me = `/account/${account_id}`
 const list = '/list/:list_id';
 const image = '/movie/:movie_id/images'
+const movieDetails = '/movie/movie_id'
 
 const urls:IUrls = {
 
@@ -35,6 +36,9 @@ const urls:IUrls = {
     },
     image: {
         base: image
+    },
+    movieDetails: {
+        base: movieDetails
     }
 }
 

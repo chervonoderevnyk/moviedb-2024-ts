@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import { useEffect } from "react";
-import { Header } from "../components/header/Header";
+import { Header } from "../components/headerContainer/Header";
 import { useAppDispatch, useAppSelector } from "../hooks/reduxHooks";
 import { meActions } from "../redux/slices/MeSlice";
 import css from "./MainLayout.module.css";
