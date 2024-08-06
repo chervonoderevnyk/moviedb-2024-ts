@@ -1,5 +1,7 @@
 import { useSearchParams } from "react-router-dom";
 import { useEffect } from "react";
+import css from "./Pagination.module.css";
+
 
 interface PaginationProps {
     totalPages: number;
@@ -29,8 +31,9 @@ const Pagination = ({ totalPages }: PaginationProps) => {
     };
 
     return (
-        <div>
+        <div className={css.paginationContainer}>
             <button onClick={handlePrev} disabled={currentPage <= 1}>Prev</button>
+            <div className={css.currentPage}>{currentPage}</div>
             <button onClick={handleNext} disabled={currentPage >= totalPages}>Next</button>
         </div>
     );

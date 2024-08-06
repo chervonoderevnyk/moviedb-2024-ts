@@ -3,7 +3,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    gap: 4px; /* Проміжок між контейнерами фільмів */
+    gap: 4px;
     margin: 1px;
 }
 
@@ -12,46 +12,28 @@
     height: 300px;
     border: 1px solid #000;
     overflow: hidden;
-    padding: 10px;
+    padding: 1px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     background-color: silver;
     border-radius: 11px;
-    background-size: cover; /* Забезпечує покриття всього контейнера */
-    background-position: center; /* Центрує зображення */
+    background-size: cover;
+    background-position: center;
 }
 
 .movieContainer div {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    z-index: 1; /* Піднімає текст над фоном */
-    background-color: rgba(255, 255, 255, 0.8); /* Напівпрозорий білий фон для тексту */
-    padding: 5px; /* Додає внутрішні відступи до тексту */
+    z-index: 1;
+    background-color: rgba(255, 255, 255, 0.3);
 }
 
 .movieContainer img {
     width: 100%;
     height: auto;
-    max-height: 150px; /* Максимальна висота для постера */
+    max-height: 150px;
     object-fit: cover;
 }
-
-.paginationButton {
-    display: flex;
-    justify-content: center;
-    margin-top: 4px;
-    margin-bottom: 10px;
-}
-
-.paginationButton button {
-    margin: 0 46px;
-    width: 200px;
-    height: 30px;
-    border-radius: 10px;
-    background-color: goldenrod;
-    border: 1px solid #000;
-}
-

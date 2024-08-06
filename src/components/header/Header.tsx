@@ -6,6 +6,7 @@ import { genreActions } from "../../redux/slices/genresSlicesContainer/GenreSlic
 import { toggleDarkMode } from "../../redux/slices/ModeSlice";
 
 const Header = () => {
+
     const dispatch = useAppDispatch();
     const { me } = useAppSelector(state => state.me);
     const { genres } = useAppSelector(state => state.genres);
@@ -26,7 +27,7 @@ const Header = () => {
         <div className={`${css.Header} ${isDarkMode ? css.darkModeHeader : ''}`}>
             <div className={css.titleContainer}>
                 <div className={css.linkContainer}>
-                    <Link to={'/movies'} className={isDarkMode ? css.darkModeLink : ''}>
+                    <Link to={'/movies'} className={`${css.superPuperMovies} ${isDarkMode ? css.darkModeLink : ''}`}>
                         SUPER-PUPER MOVIES
                     </Link>
                 </div>
@@ -39,7 +40,10 @@ const Header = () => {
                     </button>
 
                     {me ? (
-                        <span className={css.userNameContainer}>{me.username}</span>
+                        <span className={`${css.userNameContainer} 
+                        ${isDarkMode ? css.darkModeUserNameContainer : ''}`}>
+                            {me.username}
+                        </span>
                     ) : (
                         <Link to={'/me'}>me</Link>
                     )}
@@ -51,7 +55,8 @@ const Header = () => {
                     <Link
                         key={genre.id}
                         to={`/list/${genre.id}`}
-                        className={`${css.genreLink} ${isDarkMode ? css.darkModeGenreLink : ''} ${currentGenreId === genre.id ? css.activeGenreLink : ''}`}
+                        className={`${css.genreLink} ${isDarkMode ? css.darkModeGenreLink : ''}
+                         ${currentGenreId === genre.id ? css.activeGenreLink : ''}`}
                     >
                         {genre.name}
                     </Link>

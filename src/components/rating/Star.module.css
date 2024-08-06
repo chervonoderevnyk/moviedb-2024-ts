@@ -1,0 +1,43 @@
+.starRatingContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.star {
+    font-size: 24px;
+    color: gold;
+    margin-right: 2px;
+    position: relative;
+    display: inline-block;
+}
+
+.starFilled {
+    color: gold;
+}
+
+.starPartial {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.starPartialFilled {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: gold;
+    overflow: hidden;
+}
+
+.starEmpty {
+    color: #ccc;
+}
+
+.starRatingContainer {
+    display: flex;
+    flex-direction: row;
+    padding: 1px; /* Додатковий відступ для бордера */
+    border-radius: 8px; /* Закруглені кути */
+}
+
+

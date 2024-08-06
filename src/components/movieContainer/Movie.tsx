@@ -4,13 +4,14 @@ import { IMovie } from "../../interfaces/moviesInterfaceContainer/IMovie";
 import css from "./Movie.module.css";
 import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
 import { movieActions } from "../../redux/slices/moviesSlicesContainer/MovieSlice";
+import { StarRating } from "../rating/StarRating";
 
 interface IProps extends PropsWithChildren {
     movie: IMovie;
 }
 
 const Movie: FC<IProps> = ({ movie }) => {
-    const { id, title, popularity } = movie;
+    const { id, popularity} = movie;
     const dispatch = useAppDispatch();
 
     const { images } =
@@ -32,8 +33,8 @@ const Movie: FC<IProps> = ({ movie }) => {
                     imageUrl ? `url(https://image.tmdb.org/t/p/w500${imageUrl})` : 'none'
             }}
         >
-            {/*<div>{title}</div>*/}
-            <div>{popularity}</div>
+            {/*<div>{popularity}</div>*/}
+            <StarRating rating={popularity} />
         </div>
     );
 };
