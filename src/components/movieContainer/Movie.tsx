@@ -1,10 +1,11 @@
 import { FC, PropsWithChildren, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+
 import { IMovie } from '../../interfaces/moviesInterfaceContainer/IMovie';
-import css from './Movie.module.css';
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
 import { movieActions } from '../../redux/slices/moviesSlicesContainer/MovieSlice';
 import { StarRating } from '../ratingContainer/StarRating';
+import css from './Movie.module.css';
 
 interface IProps extends PropsWithChildren {
     movie: IMovie;

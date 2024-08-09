@@ -36,8 +36,8 @@
 .starRatingContainer {
     display: flex;
     flex-direction: row;
-    padding: 1px; /* Додатковий відступ для бордера */
-    border-radius: 8px; /* Закруглені кути */
+    padding: 1px;
+    border-radius: 8px;
 }
 
 

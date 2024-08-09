@@ -1,4 +1,5 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+
 import {genreService} from "../../../services/GenreService";
 import {IGenreList} from "../../../interfaces/genresInterfaceContainer/IGenreList";
 import {IMovie} from "../../../interfaces/moviesInterfaceContainer/IMovie";

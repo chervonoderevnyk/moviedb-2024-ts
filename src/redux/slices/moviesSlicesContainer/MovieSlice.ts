@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-import { IMovieDetails } from '../../../interfaces/moviesInterfaceContainer/IMovieDetails';
 import { movieService } from '../../../services/MovieService';
+import { IMovieDetails } from '../../../interfaces/moviesInterfaceContainer/IMovieDetails';
 import {IMovie} from "../../../interfaces/moviesInterfaceContainer/IMovie";
 import {IPosterImage} from "../../../interfaces/moviesInterfaceContainer/IPosterImage";
 import {IPagination} from "../../../interfaces/moviesInterfaceContainer/IPagination";

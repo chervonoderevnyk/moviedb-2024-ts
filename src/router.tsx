@@ -1,4 +1,5 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom';
+
 import { MoviesPage } from './pages/MoviesPage';
 import { GenreListPage } from './pages/GenreListPage';
 import { MovieDetailsPage } from './pages/MovieDetailsPage';
