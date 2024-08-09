@@ -1,8 +1,30 @@
 .mainContainer {
     padding: 3px;
     background-color: lightblue;
+    position: relative;
+    z-index: 1; /* Базовий z-index */
 }
 
 .darkModeMainContainer {
     background-color: #000000; /* Чорний фон */
 }
+
+.mainContent {
+    position: relative;
+    z-index: 1; /* Основний контент, який буде залишатися зверху */
+}
+
+.blurBackground {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    filter: blur(5px);
+    z-index: 0; /* Має бути під основним контентом */
+    pointer-events: none; /* Забороняє взаємодію з елементами під затуманенням */
+}
+
+
+

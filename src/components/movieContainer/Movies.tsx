@@ -1,10 +1,10 @@
-import {useEffect} from "react";
-import {useAppDispatch, useAppSelector} from "../../hooks/reduxHooks";
-import {movieActions} from "../../redux/slices/moviesSlicesContainer/MovieSlice";
-import {Movie} from "./Movie";
+import { useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
+import { movieActions } from "../../redux/slices/moviesSlicesContainer/MovieSlice";
+import { Movie } from "./Movie";
 import css from "./Movie.module.css";
-import {useSearchParams} from "react-router-dom";
-import {Pagination} from "../paginationContainer/Pagination";
+import { useSearchParams } from "react-router-dom";
+import { Pagination } from "../paginationContainer/Pagination";
 
 const Movies = () => {
     const [query] = useSearchParams();

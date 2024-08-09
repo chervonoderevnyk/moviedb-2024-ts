@@ -5,7 +5,7 @@ const MoviesPage = () => {
     return (
         <div>
             <Movies/>
-            <Outlet/> {/* Додати Outlet для рендерингу дочірніх маршрутів */}
+            <Outlet/>
         </div>
     );
 };

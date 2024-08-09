@@ -9,5 +9,7 @@ export interface IMovieDetails {
     popularity: number,
     status: string,
     title: string,
-    vote_count: number
+    vote_count: number,
+    release_date: string,
+    tagline: string
 }

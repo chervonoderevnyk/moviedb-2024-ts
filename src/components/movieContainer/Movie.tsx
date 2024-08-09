@@ -1,10 +1,10 @@
-import { FC, PropsWithChildren, useEffect } from "react";
-import { useNavigate } from "react-router-dom"; // Додати useNavigate
-import { IMovie } from "../../interfaces/moviesInterfaceContainer/IMovie";
-import css from "./Movie.module.css";
-import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
-import { movieActions } from "../../redux/slices/moviesSlicesContainer/MovieSlice";
-import { StarRating } from "../ratingContainer/StarRating";
+import { FC, PropsWithChildren, useEffect } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import { IMovie } from '../../interfaces/moviesInterfaceContainer/IMovie';
+import css from './Movie.module.css';
+import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
+import { movieActions } from '../../redux/slices/moviesSlicesContainer/MovieSlice';
+import { StarRating } from '../ratingContainer/StarRating';
 
 interface IProps extends PropsWithChildren {
     movie: IMovie;
@@ -13,9 +13,10 @@ interface IProps extends PropsWithChildren {
 const Movie: FC<IProps> = ({ movie }) => {
     const { id, popularity } = movie;
     const dispatch = useAppDispatch();
-    const navigate = useNavigate(); // Ініціалізація useNavigate
-
+    const navigate = useNavigate();
     const { images } = useAppSelector(state => state.movies);
+    const [searchParams] = useSearchParams();
+    const page = searchParams.get('page') || '1'; // Отримуємо поточну сторінку
 
     useEffect(() => {
         if (!images[id]) {
@@ -25,9 +26,9 @@ const Movie: FC<IProps> = ({ movie }) => {
 
     const imageUrl = images[id]?.[0]?.file_path;
 
-    // Функція для обробки кліку по фільму
     const handleClick = () => {
-        navigate(`/movie/${id}`);
+        // Додаємо параметр page до маршруту
+        navigate(`/movie/${id}?page=${page}`);
     };
 
     return (
@@ -37,9 +38,9 @@ const Movie: FC<IProps> = ({ movie }) => {
                 backgroundImage:
                     imageUrl ? `url(https://image.tmdb.org/t/p/w500${imageUrl})` : 'none'
             }}
-            onClick={handleClick} // Додати обробник кліку
+            onClick={handleClick}
         >
-            <StarRating rating={popularity}/>
+            <StarRating rating={popularity} />
         </div>
     );
 };
